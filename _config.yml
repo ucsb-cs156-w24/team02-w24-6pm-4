@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team02-w24-6pm-4
 owner: ucsb-cs156-w24
 repo_name: team02-w24-6pm-4
-pull_requests: [{"author":{"id":"U_kgDOBaDySw","is_bot":false,"login":"AdmPenguin","name":"Bao T."},"headRefName":"bt-UCSBOrganization","number":43,"title":"added database stuff","url":"https://github.com/ucsb-cs156-w24/team02-w24-6pm-4/pull/43"}]
+pull_requests: [{"author":{"id":"U_kgDOBdPPow","is_bot":false,"login":"ryanvo504","name":""},"headRefName":"rv-help","number":44,"title":"added HelpRequests DataBase","url":"https://github.com/ucsb-cs156-w24/team02-w24-6pm-4/pull/44"},{"author":{"id":"U_kgDOBaDySw","is_bot":false,"login":"AdmPenguin","name":"Bao T."},"headRefName":"bt-UCSBOrganization","number":43,"title":"added database stuff","url":"https://github.com/ucsb-cs156-w24/team02-w24-6pm-4/pull/43"}]
