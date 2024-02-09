@@ -1,8 +1,8 @@
 { "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "Users-1",
-        "author": "MattP",
+        "id": "HelpRequests-1",
+        "author": "RyanV",
         "preConditions": [
           {
             "onFail": "MARK_RAN"
@@ -11,7 +11,7 @@
             "not": [
               {
                 "tableExists": {
-                  "tableName": "USERS"
+                  "tableName": "HELPREQUESTS"
                 }
               }
             ]
@@ -37,68 +37,41 @@
                     "constraints": {
                       "nullable": false
                     },
-                    "name": "ADMIN",
+                    "name": "solved",
                     "type": "BOOLEAN"
                   }
                 },
                 {
                   "column": {
-                    "name": "EMAIL",
+                    "name": "TEAMID",
                     "type": "VARCHAR(255)"
                   }
                 },
                 {
                   "column": {
-                    "constraints": {
-                      "nullable": false
-                    },
-                    "name": "EMAIL_VERIFIED",
-                    "type": "BOOLEAN"
-                  }
-                },
-                {
-                  "column": {
-                    "name": "FAMILY_NAME",
+                    "name": "TABLEORBREAKOUTROOM",
                     "type": "VARCHAR(255)"
                   }
                 },
                 {
                   "column": {
-                    "name": "FULL_NAME",
+                    "name": "REQUESTTIME",
+                    "type": "TIMESTAMP"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "REQUESTEREMAIL",
                     "type": "VARCHAR(255)"
                   }
                 },
                 {
                   "column": {
-                    "name": "GIVEN_NAME",
+                    "name": "EXPLANATION",
                     "type": "VARCHAR(255)"
                   }
-                },
-                {
-                  "column": {
-                    "name": "GOOGLE_SUB",
-                    "type": "VARCHAR(255)"
-                  }
-                },
-                {
-                  "column": {
-                    "name": "HOSTED_DOMAIN",
-                    "type": "VARCHAR(255)"
-                  }
-                },
-                {
-                  "column": {
-                    "name": "LOCALE",
-                    "type": "VARCHAR(255)"
-                  }
-                },
-                {
-                  "column": {
-                    "name": "PICTURE_URL",
-                    "type": "VARCHAR(255)"
-                  }
-                }]
-              ,
+                }
+              ],
               "tableName": "USERS"
             }
           }]
