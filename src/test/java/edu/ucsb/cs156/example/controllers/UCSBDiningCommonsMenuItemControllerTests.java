@@ -112,16 +112,16 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 // arrange
 
                 UCSBDiningCommonsMenuItem ucsbMenuItem1 = UCSBDiningCommonsMenuItem.builder()
-                                .name("Baked Pesto Pasta with Chicken")
+                                .name("BakedPestoPastawithChicken")
                                 .diningCommonsCode("ortega")
-                                .station("Entree Specials")
+                                .station("EntreeSpecials")
                                 .build();
 
                 when(ucsbDiningMenuItemRepository.save(eq(ucsbMenuItem1))).thenReturn(ucsbMenuItem1);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsbdiningmenu/post?name=firstDayOfClasses&quarterYYYYQ=20222&localDateTime=2022-01-03T00:00:00")
+                                post("/api/ucsbdiningmenu/post?name=BakedPestoPastawithChicken&diningCommonsCode=ortega&station=EntreeSpecials")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 

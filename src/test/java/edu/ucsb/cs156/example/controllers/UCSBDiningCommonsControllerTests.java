@@ -40,18 +40,18 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
         @MockBean
         UserRepository userRepository;
 
-        // Tests for GET /api/ucsbdiningcommons/all
+        // Tests for GET /api/ucsbdiningmenuitem/all
 
         @Test
         public void logged_out_users_cannot_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningcommons/all"))
+                mockMvc.perform(get("/api/ucsbdiningmenuitem/all"))
                                 .andExpect(status().is(403)); // logged out users can't get all
         }
 
         @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_users_can_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningcommons/all"))
+                mockMvc.perform(get("/api/ucsbdiningmenuitem/all"))
                                 .andExpect(status().is(200)); // logged
         }
 
@@ -64,7 +64,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 when(ucsbDiningCommonsRepository.findById(eq("munger-hall"))).thenReturn(Optional.empty());
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommons?code=munger-hall"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenuitem?code=munger-hall"))
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
@@ -107,7 +107,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 when(ucsbDiningCommonsRepository.findAll()).thenReturn(expectedCommons);
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommons/all"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenuitem/all"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -118,18 +118,18 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 assertEquals(expectedJson, responseString);
         }
 
-        // Tests for POST /api/ucsbdiningcommons...
+        // Tests for POST /api/ucsbdiningmenuitem...
 
         @Test
         public void logged_out_users_cannot_post() throws Exception {
-                mockMvc.perform(post("/api/ucsbdiningcommons/post"))
+                mockMvc.perform(post("/api/ucsbdiningmenuitem/post"))
                                 .andExpect(status().is(403));
         }
 
         @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_regular_users_cannot_post() throws Exception {
-                mockMvc.perform(post("/api/ucsbdiningcommons/post"))
+                mockMvc.perform(post("/api/ucsbdiningmenuitem/post"))
                                 .andExpect(status().is(403)); // only admins can post
         }
 
@@ -152,7 +152,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsbdiningcommons/post?name=Ortega&code=ortega&hasSackMeal=true&hasTakeOutMeal=true&hasDiningCam=true&latitude=34.410987&longitude=-119.84709")
+                                post("/api/ucsbdiningmenuitem/post?name=Ortega&code=ortega&hasSackMeal=true&hasTakeOutMeal=true&hasDiningCam=true&latitude=34.410987&longitude=-119.84709")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -164,11 +164,11 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
         }
 
 
-        // Tests for GET /api/ucsbdiningcommons?...
+        // Tests for GET /api/ucsbdiningmenuitem?...
 
         @Test
         public void logged_out_users_cannot_get_by_id() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningcommons?code=carrillo"))
+                mockMvc.perform(get("/api/ucsbdiningmenuitem?code=carrillo"))
                                 .andExpect(status().is(403)); // logged out users can't get by id
         }
 
@@ -191,7 +191,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 when(ucsbDiningCommonsRepository.findById(eq("carrillo"))).thenReturn(Optional.of(commons));
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommons?code=carrillo"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenuitem?code=carrillo"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -202,7 +202,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 assertEquals(expectedJson, responseString);
         }
 
-        // Tests for DELETE /api/ucsbdiningcommons?...
+        // Tests for DELETE /api/ucsbdiningmenuitem?...
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
@@ -223,7 +223,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdiningcommons?code=portola")
+                                delete("/api/ucsbdiningmenuitem?code=portola")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -245,7 +245,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdiningcommons?code=munger-hall")
+                                delete("/api/ucsbdiningmenuitem?code=munger-hall")
                                                 .with(csrf()))
                                 .andExpect(status().isNotFound()).andReturn();
 
@@ -255,7 +255,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 assertEquals("UCSBDiningCommons with id munger-hall not found", json.get("message"));
         }
 
-        // Tests for PUT /api/ucsbdiningcommons?...
+        // Tests for PUT /api/ucsbdiningmenuitem?...
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
@@ -288,7 +288,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdiningcommons?code=carrillo")
+                                put("/api/ucsbdiningmenuitem?code=carrillo")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
@@ -324,7 +324,7 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdiningcommons?code=munger-hall")
+                                put("/api/ucsbdiningmenuitem?code=munger-hall")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
