@@ -24,9 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-//import java.time.LocalDateTime;
-
-@Tag(name = "UCSBMenuItems")
+@Tag(name = "UCSBDiningCommonsMenuItem")
 @RequestMapping("/api/ucsbdiningcommonsmenuitem")
 @RestController
 @Slf4j
