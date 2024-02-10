@@ -28,8 +28,8 @@ import javax.validation.Valid;
 
 import java.time.LocalDateTime;
 
-@Tag(name = "HelpRequest")
-@RequestMapping("/api/helprequest")
+@Tag(name = "HelpRequests")
+@RequestMapping("/api/helprequests")
 @RestController
 @Slf4j
 public class HelpRequestsController extends ApiController {
