@@ -40,18 +40,18 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
         @MockBean
         UserRepository userRepository;
 
-        // Tests for GET /api/ucsbdiningmenu/all
+        // Tests for GET /api/ucsbdiningcommonsmenuitem/all
         
         @Test
         public void logged_out_users_cannot_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningmenu/all"))
+                mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem/all"))
                                 .andExpect(status().is(403)); // logged out users can't get all
         }
 
         @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_users_can_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningmenu/all"))
+                mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem/all"))
                                 .andExpect(status().is(200)); // logged
         }
 
@@ -80,7 +80,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 when(ucsbDiningMenuItemRepository.findAll()).thenReturn(expectedMenuItems);
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenu/all"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem/all"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -91,18 +91,18 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 assertEquals(expectedJson, responseString);
         }
 
-        // Tests for POST /api/ucsbdiningmenu/post...
+        // Tests for POST /api/ucsbdiningcommonsmenuitem/post...
 
         @Test
         public void logged_out_users_cannot_post() throws Exception {
-                mockMvc.perform(post("/api/ucsbdiningmenu/post"))
+                mockMvc.perform(post("/api/ucsbdiningcommonsmenuitem/post"))
                                 .andExpect(status().is(403));
         }
 
         @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_regular_users_cannot_post() throws Exception {
-                mockMvc.perform(post("/api/ucsbdiningmenu/post"))
+                mockMvc.perform(post("/api/ucsbdiningcommonsmenuitem/post"))
                                 .andExpect(status().is(403)); // only admins can post
         }
 
@@ -121,7 +121,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsbdiningmenu/post?name=BakedPestoPastawithChicken&diningCommonsCode=ortega&station=EntreeSpecials")
+                                post("/api/ucsbdiningcommonsmenuitem/post?name=BakedPestoPastawithChicken&diningCommonsCode=ortega&station=EntreeSpecials")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -132,11 +132,11 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 assertEquals(expectedJson, responseString);
         }
 
-        // Tests for GET /api/ucsbdiningmenu?id=...
+        // Tests for GET /api/ucsbdiningcommonsmenuitem?id=...
 
         @Test
         public void logged_out_users_cannot_get_by_id() throws Exception {
-                mockMvc.perform(get("/api/ucsbdiningmenu?id=7"))
+                mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem?id=7"))
                                 .andExpect(status().is(403)); // logged out users can't get by id
         }
 
@@ -155,7 +155,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 when(ucsbDiningMenuItemRepository.findById(eq(7L))).thenReturn(Optional.of(ucsbMenuItem));
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenu?id=7"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem?id=7"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -175,7 +175,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 when(ucsbDiningMenuItemRepository.findById(eq(7L))).thenReturn(Optional.empty());
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningmenu?id=7"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem?id=7"))
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
@@ -187,7 +187,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
         }
 
 
-        // Tests for DELETE /api/ucsbdiningmenu?id=... 
+        // Tests for DELETE /api/ucsbdiningcommonsmenuitem?id=... 
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
@@ -204,7 +204,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdiningmenu?id=15")
+                                delete("/api/ucsbdiningcommonsmenuitem?id=15")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -226,7 +226,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdiningmenu?id=15")
+                                delete("/api/ucsbdiningcommonsmenuitem?id=15")
                                                 .with(csrf()))
                                 .andExpect(status().isNotFound()).andReturn();
 
@@ -236,7 +236,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 assertEquals("UCSBDiningCommonsMenuItem with id 15 not found", json.get("message"));
         }
 
-        // Tests for PUT /api/ucsbdiningmenu?id=... 
+        // Tests for PUT /api/ucsbdiningcommonsmenuitem?id=... 
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
@@ -261,7 +261,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdiningmenu?id=67")
+                                put("/api/ucsbdiningcommonsmenuitem?id=67")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
@@ -293,7 +293,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdiningmenu?id=67")
+                                put("/api/ucsbdiningcommonsmenuitem?id=67")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
