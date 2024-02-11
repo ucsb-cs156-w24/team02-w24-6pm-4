@@ -1,6 +1,6 @@
 package edu.ucsb.cs156.example.controllers;
 
-import edu.ucsb.cs156.example.entities.UCSBDate;
+import edu.ucsb.cs156.example.entities.MenuItemReview;
 import edu.ucsb.cs156.example.errors.EntityNotFoundException;
 import edu.ucsb.cs156.example.repositories.MenuItemReviewRepository;
 
@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-
-import java.time.LocalDateTime;
-import edu.ucsb.cs156.example.entities.MenuItemReview;
 
 @Tag(name = "MenuItemReview")
 @RequestMapping("/api/menuitemreview")
@@ -55,9 +51,6 @@ public class MenuItemReviewController extends ApiController {
             )
             throws JsonProcessingException {
 
-        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-        // See: https://www.baeldung.com/spring-date-parameters
-
         log.info("station={}", station);
 
         MenuItemReview menuItemReview = new MenuItemReview();
@@ -70,45 +63,45 @@ public class MenuItemReviewController extends ApiController {
         return savedMenuItemReview;
     }
 
-    // @Operation(summary= "Get a single date")
-    // @PreAuthorize("hasRole('ROLE_USER')")
-    // @GetMapping("")
-    // public UCSBDate getById(
-    //         @Parameter(name="id") @RequestParam Long id) {
-    //     UCSBDate ucsbDate = ucsbDateRepository.findById(id)
-    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDate.class, id));
+    @Operation(summary= "Get a single review")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public MenuItemReview getById(
+            @Parameter(name="id") @RequestParam Long id) {
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
 
-    //     return ucsbDate;
-    // }
+        return menuItemReview;
+    }
 
-    // @Operation(summary= "Delete a UCSBDate")
-    // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    // @DeleteMapping("")
-    // public Object deleteUCSBDate(
-    //         @Parameter(name="id") @RequestParam Long id) {
-    //     UCSBDate ucsbDate = ucsbDateRepository.findById(id)
-    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDate.class, id));
+    @Operation(summary= "Delete a MenuItemReview")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteMenuItemReview(
+            @Parameter(name="id") @RequestParam Long id) {
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
 
-    //     ucsbDateRepository.delete(ucsbDate);
-    //     return genericMessage("UCSBDate with id %s deleted".formatted(id));
-    // }
+        menuItemReviewRepository.delete(menuItemReview);
+        return genericMessage("MenuItemReview with id %s deleted".formatted(id));
+    }
 
-    // @Operation(summary= "Update a single date")
-    // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    // @PutMapping("")
-    // public UCSBDate updateUCSBDate(
-    //         @Parameter(name="id") @RequestParam Long id,
-    //         @RequestBody @Valid UCSBDate incoming) {
+    @Operation(summary= "Update a single review")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public MenuItemReview updateMenuItemReview(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid MenuItemReview incoming) {
 
-    //     UCSBDate ucsbDate = ucsbDateRepository.findById(id)
-    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDate.class, id));
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
 
-    //     ucsbDate.setQuarterYYYYQ(incoming.getQuarterYYYYQ());
-    //     ucsbDate.setName(incoming.getName());
-    //     ucsbDate.setLocalDateTime(incoming.getLocalDateTime());
+        menuItemReview.setDiningCommonsCode(incoming.getDiningCommonsCode());
+        menuItemReview.setName(incoming.getName());
+        menuItemReview.setStation(incoming.getStation());
 
-    //     ucsbDateRepository.save(ucsbDate);
+        menuItemReviewRepository.save(menuItemReview);
 
-    //     return ucsbDate;
-    // }
+        return menuItemReview;
+    }
 }
