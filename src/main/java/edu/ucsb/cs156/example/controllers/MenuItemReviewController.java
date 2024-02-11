@@ -41,8 +41,8 @@ public class MenuItemReviewController extends ApiController {
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<MenuItemReview> allMenuItemReview() {
-        Iterable<MenuItemReview> dates = menuItemReviewRepository.findAll();
-        return dates;
+        Iterable<MenuItemReview> reviews = menuItemReviewRepository.findAll();
+        return reviews;
     }
 
     @Operation(summary= "Create a new review")
