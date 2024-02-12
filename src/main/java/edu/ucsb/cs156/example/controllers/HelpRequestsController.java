@@ -28,7 +28,7 @@ import javax.validation.Valid;
 
 import java.time.LocalDateTime;
 
-@Tag(name = "HelpRequests")
+@Tag(name = "HelpRequest")
 @RequestMapping("/api/helprequests")
 @RestController
 @Slf4j
@@ -45,10 +45,10 @@ public class HelpRequestsController extends ApiController {
         return requests;
     }
 
-    @Operation(summary= "Create a new date")
+    @Operation(summary= "Create a new request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
-    public HelpRequest postHelpRequests(
+    public HelpRequest postHelpRequest(
             @Parameter(name="requesterEmail") @RequestParam String requesterEmail,
             @Parameter(name="teamId") @RequestParam String teamId,
             @Parameter(name="tableOrBreakoutRoom") @RequestParam String tableOrBreakoutRoom,
@@ -86,7 +86,7 @@ public class HelpRequestsController extends ApiController {
         return helpRequest;
     }
 
-    @Operation(summary= "Delete a HelpRequests")
+    @Operation(summary= "Delete a Help Request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public Object deleteHelpRequest(
