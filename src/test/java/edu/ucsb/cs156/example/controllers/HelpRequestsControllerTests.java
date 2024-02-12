@@ -136,7 +136,7 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/helprequests/post?requesterEmail=cgaucho@ucsb.edu&teamId=s22-5pm-3&tableOrBreakoutRoom=7&explanation=Swagger&solved=false&requestTime=2022-04-20T17:35")
+                                post("/api/helprequests/post?requesterEmail=cgaucho@ucsb.edu&teamId=s22-5pm-3&tableOrBreakoutRoom=7&&requestTime=2022-04-20T17:35&explanation=Swagger&solved=false")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
