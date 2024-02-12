@@ -137,14 +137,14 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                                 .orgCode("OSLI")
                                 .orgTranslationShort("OFFICE OF STUDENT LIFE")
                                 .orgTranslation("STUDENT LIFE")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
 
                 when(ucsbOrganizationRepository.save(eq(osli))).thenReturn(osli);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/UCSBOrganization/post?orgCode=OSLI&orgTranslationShort=OFFICE OF STUDENT LIFE&orgTranslation=STUDENT LIFE&inactive=false")
+                                post("/api/UCSBOrganization/post?orgCode=OSLI&orgTranslationShort=OFFICE OF STUDENT LIFE&orgTranslation=STUDENT LIFE&inactive=true")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
