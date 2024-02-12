@@ -1,8 +1,9 @@
-{ "databaseChangeLog": [
+{
+  "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "HelpRequests-1",
-        "author": "RyanV",
+        "id": "HelpRequest-1",
+        "author": "Ryan Vo",
         "preConditions": [
           {
             "onFail": "MARK_RAN"
@@ -11,7 +12,7 @@
             "not": [
               {
                 "tableExists": {
-                  "tableName": "HELPREQUESTS"
+                  "tableName": "HELPREQUEST"
                 }
               }
             ]
@@ -26,56 +27,54 @@
                     "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
-                      "primaryKeyName": "CONSTRAINT_6"
+                      "primaryKeyName": "CONSTRAINT_7" 
                     },
                     "name": "ID",
                     "type": "BIGINT"
                   }
                 },
                 {
-                  "column": {
-                    "constraints": {
-                      "nullable": false
-                    },
-                    "name": "SOLVED",
-                    "type": "BOOLEAN"
+                  "column":{
+                    "name":"REQUESTER_EMAIL",
+                    "type":"VARCHAR(255)" 
                   }
                 },
                 {
-                  "column": {
-                    "name": "TEAMID",
-                    "type": "VARCHAR(255)"
+                  "column":{
+                    "name":"TEAM_ID",
+                    "type":"VARCHAR(255)" 
                   }
                 },
                 {
-                  "column": {
-                    "name": "TABLEORBREAKOUTROOM",
-                    "type": "VARCHAR(255)"
+                  "column":{
+                    "name":"TABLE_OR_BREAKOUT_ROOM",
+                    "type":"VARCHAR(255)" 
                   }
                 },
                 {
-                  "column": {
-                    "name": "REQUESTTIME",
-                    "type": "TIMESTAMP"
+                  "column":{
+                    "name":"REQUEST_TIME",
+                    "type":"TIMESTAMP" 
                   }
                 },
                 {
-                  "column": {
-                    "name": "REQUESTEREMAIL",
-                    "type": "VARCHAR(255)"
+                  "column":{
+                    "name":"EXPLANATION",
+                    "type":"VARCHAR(255)" 
                   }
                 },
                 {
-                  "column": {
-                    "name": "EXPLANATION",
-                    "type": "VARCHAR(255)"
+                  "column":{
+                    "name":"SOLVED",
+                    "type":"BOOLEAN" 
                   }
-                }
-              ],
-              "tableName": "HELPREQUESTS"
+                }]
+                ,
+              "tableName": "HELPREQUEST"
             }
-          }]
-  
+          }
+        ]
       }
     }
-  ]}
+  ]
+}
