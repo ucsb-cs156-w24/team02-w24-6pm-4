@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @Tag(name = "UCSBOrganization")
-@RequestMapping("/api/ucsb-organization")
+@RequestMapping("/api/UCSBOrganization")
 @RestController
 @Slf4j
 public class UCSBOrganizationController extends ApiController {
@@ -31,18 +31,18 @@ public class UCSBOrganizationController extends ApiController {
     @Autowired
     UCSBOrganizationRepository ucsbOrganizationRepository;
 
-    @Operation(summary= "Gets all organizations")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Operation(summary= "List all UCSB Organizations")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
-    public Iterable<UCSBOrganization> allCommonss() {
-        Iterable<UCSBOrganization> commons = ucsbOrganizationRepository.findAll();
-        return commons;
+    public Iterable<UCSBOrganization> allOrganizations() {
+        Iterable<UCSBOrganization> organizations = ucsbOrganizationRepository.findAll();
+        return organizations;
     }
 
     @Operation(summary= "Create a new organization")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
-    public UCSBOrganization postCommons(
+    public UCSBOrganization postOrganization(
         @Parameter(name="orgCode") @RequestParam String orgCode,
         @Parameter(name="orgTranslationShort") @RequestParam String orgTranslationShort,
         @Parameter(name="orgTranslation") @RequestParam String orgTranslation,
@@ -62,7 +62,7 @@ public class UCSBOrganizationController extends ApiController {
     }
 
     @Operation(summary= "Get a single organization")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public UCSBOrganization getById(
             @Parameter(name="orgCode") @RequestParam String orgCode) {
