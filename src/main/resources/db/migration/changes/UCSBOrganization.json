@@ -1,7 +1,5 @@
-
-{
-    "databaseChangeLog": [
-      {
+{ "databaseChangeLog": [
+    {
         "changeSet": {
           "id": "UCSBOrganization-1",
           "author": "BaoT",
@@ -27,36 +25,44 @@
                     "column": {
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "CONSTRAINT_69"
+                        "primaryKeyName": "CONSTRAINT_19"
                       },
-                      "name": "ORGCODE",
+                      "name": "ORG_CODE",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                      "name": "ORGTRANSLATIONSHORT",
+                      "constraints": {
+                        "nullable": false
+                      },
+                      "name": "ORG_TRANSLATION_SHORT",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                      "name": "ORGTRANSLATION",
+                      "constraints": {
+                        "nullable": false
+                      },
+                      "name": "ORG_TRANSLATION",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
+                      "constraints": {
+                        "nullable": false
+                      },
                       "name": "INACTIVE",
                       "type": "BOOLEAN"
                     }
-                  }
-                ],
+                  }]
+                ,
                 "tableName": "UCSBORGANIZATION"
               }
-            }
-          ]
+            }]
+
         }
-      }
-    ]
-  }
+    }
+]}
