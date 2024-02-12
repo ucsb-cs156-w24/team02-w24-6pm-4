@@ -257,8 +257,8 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
                 UCSBOrganization zprEdited = UCSBOrganization.builder()
                                 .orgCode("ZPR")
-                                .orgTranslationShort("ZETA PHI RHO")
-                                .orgTranslation("ZETA PHI RHO")
+                                .orgTranslationShort("ZETA PHO RHO")
+                                .orgTranslation("ZETA PHO RHO")
                                 .inactive(true)
                                 .build();
 
