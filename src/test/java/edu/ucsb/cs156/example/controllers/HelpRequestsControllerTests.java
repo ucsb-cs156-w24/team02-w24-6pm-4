@@ -128,7 +128,7 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
                                 .teamId("s22-5pm-3")
                                 .tableOrBreakoutRoom("7")
                                 .explanation("Swagger")
-                                .solved(false)
+                                .solved(true)
                                 .requestTime(ldt1)
                                 .build();
 
@@ -136,7 +136,7 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/helprequests/post?requesterEmail=cgaucho@ucsb.edu&teamId=s22-5pm-3&tableOrBreakoutRoom=7&&requestTime=2022-04-20T17:35&explanation=Swagger&solved=false")
+                                post("/api/helprequests/post?requesterEmail=cgaucho@ucsb.edu&teamId=s22-5pm-3&tableOrBreakoutRoom=7&&requestTime=2022-04-20T17:35&explanation=Swagger&solved=true")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -268,7 +268,7 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
                 // arrange
 
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-04-20T17:35");
-                LocalDateTime ldt2 = LocalDateTime.parse("2022-04-20T17:35");
+                LocalDateTime ldt2 = LocalDateTime.parse("2022-05-20T17:35");
                 HelpRequest helpRequestOG = HelpRequest.builder()
                                 .requesterEmail("cgaucho@ucsb.edu")
                                 .teamId("s22-5pm-3")
@@ -279,10 +279,10 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
                                 .build();
 
                 HelpRequest helpRequestEd = HelpRequest.builder()
-                                .requesterEmail("cgaucho@ucsb.edu")
-                                .teamId("s22-5pm-3")
-                                .tableOrBreakoutRoom("7")
-                                .explanation("needed help with swagger")
+                                .requesterEmail("bruh")
+                                .teamId("hehe")
+                                .tableOrBreakoutRoom("teehee")
+                                .explanation("woo")
                                 .solved(true)
                                 .requestTime(ldt2)
                                 .build();
