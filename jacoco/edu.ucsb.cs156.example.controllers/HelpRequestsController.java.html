@@ -28,7 +28,7 @@ import javax.validation.Valid;
 
 import java.time.LocalDateTime;
 
-@Tag(name = &quot;HelpRequest&quot;)
+@Tag(name = &quot;HelpRequests&quot;)
 @RequestMapping(&quot;/api/helprequests&quot;)
 @RestController
 <span class="fc" id="L34">@Slf4j</span>
@@ -54,7 +54,7 @@ import java.time.LocalDateTime;
             @Parameter(name=&quot;tableOrBreakoutRoom&quot;) @RequestParam String tableOrBreakoutRoom,
             @Parameter(name=&quot;explanation&quot;) @RequestParam String explanation,
             @Parameter(name=&quot;solved&quot;) @RequestParam Boolean solved,
-            @Parameter(name=&quot;requestTime (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)&quot;) @RequestParam(&quot;requestTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime)
+            @Parameter(name=&quot;requestTime&quot;) @RequestParam(&quot;requestTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
