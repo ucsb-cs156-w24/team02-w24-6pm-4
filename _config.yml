@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team02-w24-6pm-4
 owner: ucsb-cs156-w24
 repo_name: team02-w24-6pm-4
-pull_requests: []
+pull_requests: [{"author":{"id":"MDQ6VXNlcjM4OTAxMzc1","is_bot":false,"login":"luxiangzh","name":"Luxiang Zhang"},"headRefName":"fix","number":60,"title":"Roll back package-lock.json to previous version","url":"https://github.com/ucsb-cs156-w24/team02-w24-6pm-4/pull/60"}]
