@@ -2,6 +2,17 @@
 
 Instructions: <https://ucsb-cs156.github.io/w24/lab/team02.html>
 
+```
+| Table                       | Team Member  | Github Id      |
+|-----------------------------|--------------|----------------|
+| `UCSBDiningCommonsMenuItem` | David        | djoyneruscb    |
+| `UCSBOrganization`          | Bao          | AdmPenguin     |
+| `RecommendationRequest`     | Derek        | golo230        |
+| `MenuItemReview`            | Luxiang      | luxiangzh      |
+| `HelpRequest`               | Ryan         | ryanvo504      |
+| `Articles`                  | Aavash       | Aavash-Adhikari|
+```
+
 Deployments:
 
 * Prod: <https://team02.dokku-12.cs.ucsb.edu>
