@@ -10,7 +10,7 @@ Instructions: <https://ucsb-cs156.github.io/w24/lab/team02.html>
 | `RecommendationRequest`     | Derek        | golo230        |
 | `MenuItemReview`            | Luxiang      | luxiangzh      |
 | `HelpRequest`               | Ryan         | ryanvo504      |
-| `Articles`                  | Eddie        | Aavash-Adhikari|
+| `Articles`                  | Aavash       | Aavash-Adhikari|
 ```
 
 Deployments:
