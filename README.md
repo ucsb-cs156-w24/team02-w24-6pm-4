@@ -2,12 +2,21 @@
 
 Instructions: <https://ucsb-cs156.github.io/w24/lab/team02.html>
 
-TODO: Add a link to the deployed Dokku app for your team here, e.g.
+```
+| Table                       | Team Member  | Github Id      |
+|-----------------------------|--------------|----------------|
+| `UCSBDiningCommonsMenuItem` | David        | djoyneruscb    |
+| `UCSBOrganization`          | Bao          | AdmPenguin     |
+| `RecommendationRequest`     | Derek        | golo230        |
+| `MenuItemReview`            | Luxiang      | luxiangzh      |
+| `HelpRequest`               | Ryan         | ryanvo504      |
+| `Articles`                  | Eddie        | Aavash-Adhikari|
+```
 
 Deployments:
 
-* Prod: <https://team02.dokku-17.cs.ucsb.edu>
-* QA: <https://team02-qa.dokku-17.cs.ucsb.edu>
+* Prod: <https://team02.dokku-12.cs.ucsb.edu>
+* QA: <https://team02-qa.dokku-12.cs.ucsb.edu>
 
 # Setup before running application
 
