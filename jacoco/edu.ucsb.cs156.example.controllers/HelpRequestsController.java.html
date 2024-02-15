@@ -54,7 +54,7 @@ import java.time.LocalDateTime;
             @Parameter(name=&quot;tableOrBreakoutRoom&quot;) @RequestParam String tableOrBreakoutRoom,
             @Parameter(name=&quot;explanation&quot;) @RequestParam String explanation,
             @Parameter(name=&quot;solved&quot;) @RequestParam Boolean solved,
-            @Parameter(name=&quot;requestTime&quot;) @RequestParam(&quot;requestTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime)
+            @Parameter(name=&quot;requestTime&quot;, description=&quot;in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601&quot;) @RequestParam(&quot;requestTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
