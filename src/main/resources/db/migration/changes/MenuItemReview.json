@@ -3,7 +3,7 @@
       {
         "changeSet": {
           "id": "MenuItemReview-1",
-          "author": "MattP",
+          "author": "LuxiangZ",
           "preConditions": [
             {
               "onFail": "MARK_RAN"
@@ -35,20 +35,32 @@
                   },
                   {
                     "column": {
-                      "name": "DINING_COMMONS_CODE",
+                      "name": "ITEM_ID",
+                      "type": "BIGINT"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "REVIEWER_EMAIL",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                      "name": "NAME",
+                      "name": "STARS",
+                      "type": "INT"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "COMMENTS",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                      "name": "STATION",
-                      "type": "VARCHAR(255)"
+                      "name": "DATE_REVIEWED",
+                      "type": "TIMESTAMP"
                     }
                   }
                 ],
