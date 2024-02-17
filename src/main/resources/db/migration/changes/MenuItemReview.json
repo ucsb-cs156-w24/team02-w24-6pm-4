@@ -53,14 +53,14 @@
                   },
                   {
                     "column": {
-                      "name": "COMMENTS",
-                      "type": "VARCHAR(255)"
+                      "name": "DATE_REVIEWED",
+                      "type": "TIMESTAMP"
                     }
                   },
                   {
                     "column": {
-                      "name": "DATE_REVIEWED",
-                      "type": "TIMESTAMP"
+                      "name": "COMMENTS",
+                      "type": "VARCHAR(255)"
                     }
                   }
                 ],

@@ -106,8 +106,8 @@ public class MenuItemReviewController extends ApiController {
         menuItemReview.setItemId(incoming.getItemId());
         menuItemReview.setReviewerEmail(incoming.getReviewerEmail());
         menuItemReview.setStars(incoming.getStars());
-        menuItemReview.setComments(incoming.getComments());
         menuItemReview.setDateReviewed(incoming.getDateReviewed());
+        menuItemReview.setComments(incoming.getComments());
 
         menuItemReviewRepository.save(menuItemReview);
 
