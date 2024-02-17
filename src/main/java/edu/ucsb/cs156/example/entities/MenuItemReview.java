@@ -1,5 +1,7 @@
 package edu.ucsb.cs156.example.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,9 @@ public class MenuItemReview {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private String diningCommonsCode;
-  private String name;  
-  private String station;
+  private long itemId;
+  private String reviewerEmail;
+  private int stars;
+  private LocalDateTime dateReviewed;  
+  private String comments;
 }

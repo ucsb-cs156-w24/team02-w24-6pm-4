@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+
+import java.time.LocalDateTime;
 
 @Tag(name = "MenuItemReview")
 @RequestMapping("/api/menuitemreview")
@@ -45,18 +48,22 @@ public class MenuItemReviewController extends ApiController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public MenuItemReview postMenuItemReview(
-            @Parameter(name="diningCommonsCode") @RequestParam String diningCommonsCode,
-            @Parameter(name="name") @RequestParam String name,
-            @Parameter(name="station") @RequestParam String station
+            @Parameter(name="itemId") @RequestParam long itemId,
+            @Parameter(name="reviewerEmail") @RequestParam String reviewerEmail,
+            @Parameter(name="stars") @RequestParam int stars,
+            @Parameter(name="comments") @RequestParam String comments,
+            @Parameter(name="dateReviewed", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed
             )
             throws JsonProcessingException {
 
-        log.info("station={}", station);
+        log.info("comments={}", comments);
 
         MenuItemReview menuItemReview = new MenuItemReview();
-        menuItemReview.setDiningCommonsCode(diningCommonsCode);
-        menuItemReview.setName(name);
-        menuItemReview.setStation(station);
+        menuItemReview.setItemId(itemId);
+        menuItemReview.setReviewerEmail(reviewerEmail);
+        menuItemReview.setStars(stars);
+        menuItemReview.setDateReviewed(dateReviewed);
+        menuItemReview.setComments(comments);
 
         MenuItemReview savedMenuItemReview = menuItemReviewRepository.save(menuItemReview);
 
@@ -96,9 +103,11 @@ public class MenuItemReviewController extends ApiController {
         MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
 
-        menuItemReview.setDiningCommonsCode(incoming.getDiningCommonsCode());
-        menuItemReview.setName(incoming.getName());
-        menuItemReview.setStation(incoming.getStation());
+        menuItemReview.setItemId(incoming.getItemId());
+        menuItemReview.setReviewerEmail(incoming.getReviewerEmail());
+        menuItemReview.setStars(incoming.getStars());
+        menuItemReview.setDateReviewed(incoming.getDateReviewed());
+        menuItemReview.setComments(incoming.getComments());
 
         menuItemReviewRepository.save(menuItemReview);
 
